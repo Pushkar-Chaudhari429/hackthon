@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI-Powered Self-Healing & Fraud-Resilient Commerce Platform
 
 Enterprise-grade full-stack dashboard prototype for ideathon demos.
@@ -47,3 +48,6 @@ Enterprise-grade full-stack dashboard prototype for ideathon demos.
 - Simulation buttons call backend APIs and update UI dynamically
 - API failure states are shown through user-friendly error banners
 - Dashboard remains responsive and demo-ready for enterprise-style presentations
+=======
+# hackthon
+>>>>>>> a92122fd84e06b60b964e7d1bced6142e2e465c5

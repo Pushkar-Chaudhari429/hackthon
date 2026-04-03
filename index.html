@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI-Powered Self-Healing & Fraud-Resilient Commerce Platform</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="src/css/styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <h1>AI-Powered Self-Healing & Fraud-Resilient Commerce Platform</h1>
+        <p>Enterprise Simulation Console</p>
+      </div>
+      <nav class="nav-list">
+        <button class="nav-btn active" data-target="overview">1. Dashboard Overview</button>
+        <button class="nav-btn" data-target="traffic">2. Predictive Traffic Intelligence</button>
+        <button class="nav-btn" data-target="healing">3. Self-Healing Infrastructure</button>
+        <button class="nav-btn" data-target="fraud">4. Fraud Detection</button>
+        <button class="nav-btn" data-target="checkout">5. Checkout Protection</button>
+        <button class="nav-btn" data-target="observability">6. Observability Dashboard</button>
+        <button class="nav-btn" data-target="anomaly">7. Anomaly Detection Engine</button>
+        <button class="nav-btn" data-target="cyber">8. Cyber Resilience</button>
+        <button class="nav-btn" data-target="failover">9. Failover System</button>
+        <button class="nav-btn" data-target="order">10. Order Integrity</button>
+        <button class="nav-btn" data-target="architecture">11. Architecture View</button>
+      </nav>
+    </aside>
+
+    <main class="main">
+      <section class="topbar">
+        <div>
+          <h2>Enterprise AI Monitoring Command Center</h2>
+          <p>Real-time simulation of traffic, resilience, fraud protection, and anomaly response</p>
+        </div>
+        <span id="globalHealth" class="status-pill status-good">System Health: GOOD</span>
+      </section>
+
+      <section id="overview" class="panel active">
+        <div class="grid-4">
+          <div class="card">
+            <h3>Active Users</h3>
+            <div id="activeUsers" class="metric">12,100</div>
+            <div class="delta">Live sessions across all channels</div>
+          </div>
+          <div class="card">
+            <h3>Predicted Traffic (10 min)</h3>
+            <div id="predTraffic" class="metric">18,400</div>
+            <div class="delta">Forecast engine confidence 93%</div>
+          </div>
+          <div class="card">
+            <h3>System Health Status</h3>
+            <div id="healthText" class="metric">Good</div>
+            <div class="delta">Stability index from observability signals</div>
+          </div>
+          <div class="card">
+            <h3>Fraud Risk Level</h3>
+            <div id="fraudRisk" class="metric">Low</div>
+            <div class="delta">Behavioral + payment anomaly model</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Real-Time Traffic</h3>
+          <div class="chart-wrap"><canvas id="trafficChart"></canvas></div>
+        </div>
+
+        <div class="controls">
+          <button id="btnSpike" class="action">Simulate Traffic Spike</button>
+          <button id="btnAnomaly" class="action">Trigger Anomaly</button>
+          <button id="btnFraudAttack" class="action">Run Fraud Attack</button>
+        </div>
+      </section>
+
+      <section id="traffic" class="panel">
+        <div class="grid-2">
+          <div class="card">
+            <h3>Current vs Predicted Traffic</h3>
+            <div class="small-chart"><canvas id="predictChart"></canvas></div>
+          </div>
+          <div class="card">
+            <h3>AI Forecast Insights</h3>
+            <div id="forecastText" class="metric">Traffic expected to increase by 8%</div>
+            <div class="delta" id="eventText">Event trigger: None</div>
+            <div class="alerts" style="margin-top:10px;">
+              <div class="alert-item alert-good">Adaptive forecast model running continuously</div>
+              <div class="alert-item alert-warning">Spike prediction animation active on event triggers</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="healing" class="panel">
+        <div class="grid-3">
+          <div class="card">
+            <h3>Server Count</h3>
+            <div id="serverCount" class="metric">42</div>
+            <div class="delta">Auto-scaling adjusts by demand</div>
+          </div>
+          <div class="card">
+            <h3>Service Health</h3>
+            <div id="serviceHealth" class="metric">Healthy</div>
+            <div class="delta">API pods and checkout workers</div>
+          </div>
+          <div class="card">
+            <h3>Rerouting</h3>
+            <div id="rerouteStatus" class="metric">Standby</div>
+            <div class="delta">Cross-region traffic balancing</div>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Load Distribution</h3>
+          <div class="grid-3">
+            <div><div class="delta">US-East</div><div class="progress"><span id="loadA" style="width:40%"></span></div></div>
+            <div><div class="delta">EU-West</div><div class="progress"><span id="loadB" style="width:33%"></span></div></div>
+            <div><div class="delta">AP-South</div><div class="progress"><span id="loadC" style="width:27%"></span></div></div>
+          </div>
+          <div class="controls" style="margin-top:10px;">
+            <button id="btnApiFail" class="action">Simulate API Failure and Auto-Restart</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="fraud" class="panel">
+        <div class="card">
+          <h3>Real-Time Fraud Detection</h3>
+          <table>
+            <thead>
+              <tr><th>User ID</th><th>Amount</th><th>Status</th></tr>
+            </thead>
+            <tbody id="fraudTableBody"></tbody>
+          </table>
+          <div class="controls" style="margin-top:10px;">
+            <button id="btnFraudScan" class="action">Run Fraud Scan</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="checkout" class="panel">
+        <div class="card">
+          <h3>Smart Checkout Protection</h3>
+          <div class="queue">
+            <div class="queue-box">
+              <div class="delta">Priority Users</div>
+              <div id="priorityUsers" class="metric">120</div>
+              <div class="delta">Fast lane processing enabled</div>
+            </div>
+            <div class="queue-box">
+              <div class="delta">Suspicious Queue</div>
+              <div id="suspiciousUsers" class="metric">18</div>
+              <div class="delta">Bot delay and challenge checks</div>
+            </div>
+          </div>
+          <div class="controls" style="margin-top:10px;">
+            <button id="btnCheckoutCycle" class="action">Simulate Queue Processing</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="observability" class="panel">
+        <div class="grid-3">
+          <div class="card"><h3>CPU Usage</h3><div id="cpuMetric" class="metric">44%</div><div class="progress"><span id="cpuBar" style="width:44%"></span></div></div>
+          <div class="card"><h3>API Latency</h3><div id="latencyMetric" class="metric">112ms</div><div class="progress"><span id="latencyBar" style="width:32%"></span></div></div>
+          <div class="card"><h3>Error Rate</h3><div id="errorMetric" class="metric">0.8%</div><div class="progress"><span id="errorBar" style="width:8%"></span></div></div>
+        </div>
+        <div class="card">
+          <h3>Observability Alerts</h3>
+          <div id="obsAlerts" class="alerts">
+            <div class="alert-item alert-good">All telemetry pipelines healthy</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="anomaly" class="panel">
+        <div class="card">
+          <h3>AI Anomaly Detection Engine</h3>
+          <div id="anomalyList" class="alerts">
+            <div class="alert-item alert-good">No critical anomaly detected</div>
+          </div>
+          <div class="controls" style="margin-top:10px;">
+            <button id="btnAnomalyEvent" class="action">Trigger Anomaly Event</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="cyber" class="panel">
+        <div class="grid-3">
+          <div class="card"><h3>DDoS Detection</h3><div id="ddosStatus" class="metric">Stable</div></div>
+          <div class="card"><h3>API Abuse Alerts</h3><div id="apiAbuse" class="metric">Low</div></div>
+          <div class="card"><h3>Rate Limiting</h3><div id="rateLimit" class="metric">Normal</div></div>
+        </div>
+        <div class="controls">
+          <button id="btnBlockAttack" class="action">Simulate Attack Blocking</button>
+        </div>
+      </section>
+
+      <section id="failover" class="panel">
+        <div class="card">
+          <h3>Intelligent Failover System</h3>
+          <div class="region-grid">
+            <div id="regionA" class="region active"><strong>Region A</strong><div>Active</div></div>
+            <div id="regionB" class="region backup"><strong>Region B</strong><div>Backup</div></div>
+            <div id="regionC" class="region backup"><strong>Region C</strong><div>Backup</div></div>
+          </div>
+          <div class="controls" style="margin-top:10px;">
+            <button id="btnFailover" class="action">Simulate Region Failure and Reroute</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="order" class="panel">
+        <div class="card">
+          <h3>Order Integrity Engine</h3>
+          <div class="stepper">
+            <div id="stepPayment" class="step active">Payment</div>
+            <div id="stepProcessing" class="step">Processing</div>
+            <div id="stepConfirm" class="step">Confirmation</div>
+          </div>
+          <div id="orderStatus" class="delta" style="margin-top:12px;">Order pipeline stable</div>
+          <div class="controls" style="margin-top:10px;">
+            <button id="btnPaymentFail" class="action">Simulate Payment Failure and Retry</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="architecture" class="panel">
+        <div class="card">
+          <h3>Architecture View</h3>
+          <div class="architecture">
+            <div class="arch-node">Web Traffic Ingress</div>
+            <div class="arch-node">Predictive AI Engine</div>
+            <div class="arch-node">Self-Healing Controller</div>
+            <div class="arch-node">Fraud Risk Model</div>
+            <div class="arch-node">Checkout Queue Orchestrator</div>
+            <div class="arch-node">Observability Stack</div>
+            <div class="arch-node">Anomaly Detection Core</div>
+            <div class="arch-node">Failover Director</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>Global Activity Feed</h3>
+        <div id="logFeed" class="log-feed"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="src/js/app.js"></script>
+</body>
+</html>
